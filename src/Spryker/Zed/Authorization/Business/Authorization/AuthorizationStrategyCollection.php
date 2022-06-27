@@ -5,10 +5,11 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace Spryker\Client\Authorization\Authorization;
+namespace Spryker\Zed\Authorization\Business\Authorization;
 
-use RuntimeException;
 use Spryker\Shared\AuthorizationExtension\Dependency\Plugin\AuthorizationStrategyPluginInterface;
+use Spryker\Zed\Authorization\Business\Exception\AuthorizationStrategyAlreadyPresentException;
+use Spryker\Zed\Authorization\Business\Exception\MissingAuthorizationStrategyException;
 
 class AuthorizationStrategyCollection implements AuthorizationStrategyCollectionInterface
 {
@@ -31,14 +32,14 @@ class AuthorizationStrategyCollection implements AuthorizationStrategyCollection
      * @param string $name
      * @param \Spryker\Shared\AuthorizationExtension\Dependency\Plugin\AuthorizationStrategyPluginInterface $authorizationStrategy
      *
-     * @throws \RuntimeException
+     * @throws \Spryker\Zed\Authorization\Business\Exception\AuthorizationStrategyAlreadyPresentException
      *
      * @return $this
      */
     protected function add(string $name, AuthorizationStrategyPluginInterface $authorizationStrategy)
     {
         if ($this->has($name)) {
-            throw new RuntimeException(sprintf(
+            throw new AuthorizationStrategyAlreadyPresentException(sprintf(
                 'A strategy with the name `%s` is already present in the collection.',
                 $name,
             ));
@@ -50,7 +51,9 @@ class AuthorizationStrategyCollection implements AuthorizationStrategyCollection
     }
 
     /**
-     * @inheritDoc
+     * @param string $name
+     *
+     * @return bool
      */
     public function has(string $name): bool
     {
@@ -58,14 +61,16 @@ class AuthorizationStrategyCollection implements AuthorizationStrategyCollection
     }
 
     /**
-     * @inheritDoc
+     * @param string $name
      *
-     * @throws \RuntimeException
+     * @throws \Spryker\Zed\Authorization\Business\Exception\MissingAuthorizationStrategyException
+     *
+     * @return \Spryker\Shared\AuthorizationExtension\Dependency\Plugin\AuthorizationStrategyPluginInterface
      */
     public function get(string $name): AuthorizationStrategyPluginInterface
     {
         if (!$this->has($name)) {
-            throw new RuntimeException(sprintf(
+            throw new MissingAuthorizationStrategyException(sprintf(
                 'A strategy with the name `%s` does not exist.',
                 $name,
             ));

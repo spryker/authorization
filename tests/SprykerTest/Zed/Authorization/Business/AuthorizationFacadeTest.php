@@ -5,27 +5,29 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace SprykerTest\Client\Authorization;
+namespace SprykerTest\Zed\Authorization\Business;
 
 use Codeception\Test\Unit;
 use Generated\Shared\Transfer\AuthorizationRequestTransfer;
-use Spryker\Client\Authorization\AuthorizationDependencyProvider;
-use Spryker\Client\Authorization\Exception\AuthorizationStrategyNotFoundException;
 use Spryker\Shared\AuthorizationExtension\Dependency\Plugin\AuthorizationStrategyPluginInterface;
+use Spryker\Zed\Authorization\AuthorizationDependencyProvider;
+use Spryker\Zed\Authorization\Business\Exception\AuthorizationStrategyNotFoundException;
 
 /**
  * Auto-generated group annotations
  *
  * @group SprykerTest
- * @group Client
+ * @group Zed
  * @group Authorization
- * @group AuthorizationClientTest
+ * @group Business
+ * @group Facade
+ * @group AuthorizationFacadeTest
  * Add your own group annotations below this line
  */
-class AuthorizationClientTest extends Unit
+class AuthorizationFacadeTest extends Unit
 {
     /**
-     * @var \SprykerTest\Client\Authorization\AuthorizationClientTester
+     * @var \SprykerTest\Zed\Authorization\AuthorizationBusinessTester
      */
     protected $tester;
 
@@ -43,7 +45,7 @@ class AuthorizationClientTest extends Unit
             ->setStrategy('test-strategy');
 
         // Act
-        $authorizationResponseTransfer = $this->tester->getClient()->authorize($authorizationRequestTransfer);
+        $authorizationResponseTransfer = $this->tester->getFacade()->authorize($authorizationRequestTransfer);
 
         // Assert
         $this->assertTrue($authorizationResponseTransfer->getIsAuthorized());
@@ -63,7 +65,7 @@ class AuthorizationClientTest extends Unit
             ->setStrategy('test-strategy');
 
         // Act
-        $authorizationResponseTransfer = $this->tester->getClient()->authorize($authorizationRequestTransfer);
+        $authorizationResponseTransfer = $this->tester->getFacade()->authorize($authorizationRequestTransfer);
 
         // Assert
         $this->assertFalse($authorizationResponseTransfer->getIsAuthorized());
@@ -82,7 +84,7 @@ class AuthorizationClientTest extends Unit
         $this->expectException(AuthorizationStrategyNotFoundException::class);
 
         // Act
-        $this->tester->getClient()->authorize($authorizationRequestTransfer);
+        $this->tester->getFacade()->authorize($authorizationRequestTransfer);
     }
 
     /**

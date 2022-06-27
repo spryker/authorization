@@ -5,12 +5,15 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace Spryker\Client\Authorization;
+namespace Spryker\Zed\Authorization;
 
-use Spryker\Client\Kernel\AbstractDependencyProvider;
-use Spryker\Client\Kernel\Container;
+use Spryker\Zed\Kernel\AbstractBundleDependencyProvider;
+use Spryker\Zed\Kernel\Container;
 
-class AuthorizationDependencyProvider extends AbstractDependencyProvider
+/**
+ * @method \Spryker\Zed\Authorization\AuthorizationConfig getConfig()
+ */
+class AuthorizationDependencyProvider extends AbstractBundleDependencyProvider
 {
     /**
      * @var string
@@ -18,22 +21,22 @@ class AuthorizationDependencyProvider extends AbstractDependencyProvider
     public const PLUGINS_AUTHORIZATION_STRATEGIES = 'PLUGINS_AUTHORIZATION_STRATEGIES';
 
     /**
-     * @param \Spryker\Client\Kernel\Container $container
+     * @param \Spryker\Zed\Kernel\Container $container
      *
-     * @return \Spryker\Client\Kernel\Container
+     * @return \Spryker\Zed\Kernel\Container
      */
-    public function provideServiceLayerDependencies(Container $container): Container
+    public function provideBusinessLayerDependencies(Container $container): Container
     {
-        $container = parent::provideServiceLayerDependencies($container);
+        $container = parent::provideBusinessLayerDependencies($container);
         $container = $this->addAuthorizationStrategyPlugins($container);
 
         return $container;
     }
 
     /**
-     * @param \Spryker\Client\Kernel\Container $container
+     * @param \Spryker\Zed\Kernel\Container $container
      *
-     * @return \Spryker\Client\Kernel\Container
+     * @return \Spryker\Zed\Kernel\Container
      */
     protected function addAuthorizationStrategyPlugins(Container $container): Container
     {

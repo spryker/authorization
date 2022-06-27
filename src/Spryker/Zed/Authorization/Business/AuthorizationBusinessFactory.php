@@ -5,18 +5,22 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace Spryker\Client\Authorization;
+namespace Spryker\Zed\Authorization\Business;
 
-use Spryker\Client\Authorization\Authorization\AuthorizationChecker;
-use Spryker\Client\Authorization\Authorization\AuthorizationCheckerInterface;
-use Spryker\Client\Authorization\Authorization\AuthorizationStrategyCollection;
-use Spryker\Client\Authorization\Authorization\AuthorizationStrategyCollectionInterface;
-use Spryker\Client\Kernel\AbstractFactory;
+use Spryker\Zed\Authorization\AuthorizationDependencyProvider;
+use Spryker\Zed\Authorization\Business\Authorization\AuthorizationChecker;
+use Spryker\Zed\Authorization\Business\Authorization\AuthorizationCheckerInterface;
+use Spryker\Zed\Authorization\Business\Authorization\AuthorizationStrategyCollection;
+use Spryker\Zed\Authorization\Business\Authorization\AuthorizationStrategyCollectionInterface;
+use Spryker\Zed\Kernel\Business\AbstractBusinessFactory;
 
-class AuthorizationFactory extends AbstractFactory
+/**
+ * @method \Spryker\Zed\Authorization\AuthorizationConfig getConfig()
+ */
+class AuthorizationBusinessFactory extends AbstractBusinessFactory
 {
     /**
-     * @return \Spryker\Client\Authorization\Authorization\AuthorizationCheckerInterface
+     * @return \Spryker\Zed\Authorization\Business\Authorization\AuthorizationCheckerInterface
      */
     public function createAuthorizationChecker(): AuthorizationCheckerInterface
     {
@@ -24,7 +28,7 @@ class AuthorizationFactory extends AbstractFactory
     }
 
     /**
-     * @return \Spryker\Client\Authorization\Authorization\AuthorizationStrategyCollectionInterface
+     * @return \Spryker\Zed\Authorization\Business\Authorization\AuthorizationStrategyCollectionInterface
      */
     public function createAuthorizationStrategyCollection(): AuthorizationStrategyCollectionInterface
     {
