@@ -30,9 +30,6 @@ class AuthorizationClientTester extends Actor
 {
     use _generated\AuthorizationClientTesterActions;
 
-    /**
-     * @return \Spryker\Client\Authorization\AuthorizationClientInterface
-     */
     public function getClient(): AuthorizationClientInterface
     {
         return $this->getLocator()->authorization()->client();

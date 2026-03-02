@@ -18,9 +18,6 @@ class AuthorizationChecker implements AuthorizationCheckerInterface
      */
     protected $authorizationStrategyCollection;
 
-    /**
-     * @param \Spryker\Client\Authorization\Authorization\AuthorizationStrategyCollectionInterface $authorizationStrategyCollection
-     */
     public function __construct(AuthorizationStrategyCollectionInterface $authorizationStrategyCollection)
     {
         $this->authorizationStrategyCollection = $authorizationStrategyCollection;

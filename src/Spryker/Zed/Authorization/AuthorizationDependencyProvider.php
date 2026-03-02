@@ -20,11 +20,6 @@ class AuthorizationDependencyProvider extends AbstractBundleDependencyProvider
      */
     public const PLUGINS_AUTHORIZATION_STRATEGIES = 'PLUGINS_AUTHORIZATION_STRATEGIES';
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     public function provideBusinessLayerDependencies(Container $container): Container
     {
         $container = parent::provideBusinessLayerDependencies($container);
@@ -33,11 +28,6 @@ class AuthorizationDependencyProvider extends AbstractBundleDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addAuthorizationStrategyPlugins(Container $container): Container
     {
         $container->set(static::PLUGINS_AUTHORIZATION_STRATEGIES, function () {

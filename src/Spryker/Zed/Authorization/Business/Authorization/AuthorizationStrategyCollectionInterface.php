@@ -11,17 +11,7 @@ use Spryker\Shared\AuthorizationExtension\Dependency\Plugin\AuthorizationStrateg
 
 interface AuthorizationStrategyCollectionInterface
 {
-    /**
-     * @param string $name
-     *
-     * @return bool
-     */
     public function has(string $name): bool;
 
-    /**
-     * @param string $name
-     *
-     * @return \Spryker\Shared\AuthorizationExtension\Dependency\Plugin\AuthorizationStrategyPluginInterface
-     */
     public function get(string $name): AuthorizationStrategyPluginInterface;
 }

@@ -49,9 +49,6 @@ class AuthorizationStrategyCollection implements AuthorizationStrategyCollection
         return $this;
     }
 
-    /**
-     * @inheritDoc
-     */
     public function has(string $name): bool
     {
         return isset($this->authorizationStrategies[$name]);

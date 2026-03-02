@@ -19,9 +19,6 @@ use Spryker\Zed\Kernel\Business\AbstractBusinessFactory;
  */
 class AuthorizationBusinessFactory extends AbstractBusinessFactory
 {
-    /**
-     * @return \Spryker\Zed\Authorization\Business\Authorization\AuthorizationCheckerInterface
-     */
     public function createAuthorizationChecker(): AuthorizationCheckerInterface
     {
         return new AuthorizationChecker(
@@ -29,9 +26,6 @@ class AuthorizationBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\Authorization\Business\Authorization\AuthorizationStrategyCollectionInterface
-     */
     public function createAuthorizationStrategyCollection(): AuthorizationStrategyCollectionInterface
     {
         return new AuthorizationStrategyCollection($this->getAuthorizationStrategyPlugins());

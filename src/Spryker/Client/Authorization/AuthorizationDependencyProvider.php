@@ -17,11 +17,6 @@ class AuthorizationDependencyProvider extends AbstractDependencyProvider
      */
     public const PLUGINS_AUTHORIZATION_STRATEGIES = 'PLUGINS_AUTHORIZATION_STRATEGIES';
 
-    /**
-     * @param \Spryker\Client\Kernel\Container $container
-     *
-     * @return \Spryker\Client\Kernel\Container
-     */
     public function provideServiceLayerDependencies(Container $container): Container
     {
         $container = parent::provideServiceLayerDependencies($container);
@@ -30,11 +25,6 @@ class AuthorizationDependencyProvider extends AbstractDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Client\Kernel\Container $container
-     *
-     * @return \Spryker\Client\Kernel\Container
-     */
     protected function addAuthorizationStrategyPlugins(Container $container): Container
     {
         $container->set(static::PLUGINS_AUTHORIZATION_STRATEGIES, function () {

@@ -15,17 +15,11 @@ use Spryker\Client\Kernel\AbstractFactory;
 
 class AuthorizationFactory extends AbstractFactory
 {
-    /**
-     * @return \Spryker\Client\Authorization\Authorization\AuthorizationCheckerInterface
-     */
     public function createAuthorizationChecker(): AuthorizationCheckerInterface
     {
         return new AuthorizationChecker($this->createAuthorizationStrategyCollection());
     }
 
-    /**
-     * @return \Spryker\Client\Authorization\Authorization\AuthorizationStrategyCollectionInterface
-     */
     public function createAuthorizationStrategyCollection(): AuthorizationStrategyCollectionInterface
     {
         return new AuthorizationStrategyCollection($this->getAuthorizationStrategyPlugins());

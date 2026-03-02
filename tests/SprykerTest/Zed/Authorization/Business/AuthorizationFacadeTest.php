@@ -31,9 +31,6 @@ class AuthorizationFacadeTest extends Unit
      */
     protected $tester;
 
-    /**
-     * @return void
-     */
     public function testAuthorizeWithAuthorizationStrategiesSuccessful(): void
     {
         // Arrange
@@ -51,9 +48,6 @@ class AuthorizationFacadeTest extends Unit
         $this->assertTrue($authorizationResponseTransfer->getIsAuthorized());
     }
 
-    /**
-     * @return void
-     */
     public function testAuthorizeWithAuthorizationStrategiesUnsuccessful(): void
     {
         // Arrange
@@ -71,9 +65,6 @@ class AuthorizationFacadeTest extends Unit
         $this->assertFalse($authorizationResponseTransfer->getIsAuthorized());
     }
 
-    /**
-     * @return void
-     */
     public function testAuthorizeWithAuthorizationStrategiesException(): void
     {
         // Arrange
@@ -87,11 +78,6 @@ class AuthorizationFacadeTest extends Unit
         $this->tester->getFacade()->authorize($authorizationRequestTransfer);
     }
 
-    /**
-     * @param bool $isAuthorized
-     *
-     * @return \Spryker\Shared\AuthorizationExtension\Dependency\Plugin\AuthorizationStrategyPluginInterface
-     */
     protected function getAuthorizationStrategyPluginMock(bool $isAuthorized = true): AuthorizationStrategyPluginInterface
     {
         $authorizationStrategyPluginMock = $this->getMockBuilder(AuthorizationStrategyPluginInterface::class)->getMock();

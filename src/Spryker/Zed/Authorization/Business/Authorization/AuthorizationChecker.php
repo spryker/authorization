@@ -24,9 +24,6 @@ class AuthorizationChecker implements AuthorizationCheckerInterface
      */
     protected AuthorizationStrategyCollectionInterface $authorizationStrategyCollection;
 
-    /**
-     * @param \Spryker\Zed\Authorization\Business\Authorization\AuthorizationStrategyCollectionInterface $authorizationStrategyCollection
-     */
     public function __construct(AuthorizationStrategyCollectionInterface $authorizationStrategyCollection)
     {
         $this->authorizationStrategyCollection = $authorizationStrategyCollection;

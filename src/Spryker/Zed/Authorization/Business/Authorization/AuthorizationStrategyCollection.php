@@ -50,11 +50,6 @@ class AuthorizationStrategyCollection implements AuthorizationStrategyCollection
         return $this;
     }
 
-    /**
-     * @param string $name
-     *
-     * @return bool
-     */
     public function has(string $name): bool
     {
         return isset($this->authorizationStrategies[$name]);
